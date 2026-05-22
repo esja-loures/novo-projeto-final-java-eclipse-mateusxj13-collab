@@ -22,45 +22,64 @@ public class Main {
 				v.listarFilmes();
 
 			} else if (opcao == 2) {
-    			System.out.println("Título: ");
-    			String titulo = sc.nextLine();
-    
-    			// TODO: Pede o ano ao utilizador (lê com sc.nextInt())
-    			// int ano = sc.nextInt();
-    
-    			// NOTA: Limpa o buffer depois de leres o ano para evitar loops no menu
-    			sc.nextLine(); 
-    
-    			// TODO: Atualiza o construtor para passar também o ano
-    			Filme f = new Filme(titulo); 
-    			v.adicionarFilme(f);
+				System.out.println("Título: ");
+				String titulo = sc.nextLine();
+
+				// acrescentei pedido do ano
+				System.out.println("Ano: ");
+				int ano = sc.nextInt();
+				sc.nextLine();
+
+				// construtor vai passar a receber o atributo ano
+				Filme f = new Filme(titulo, ano);
+
+				v.adicionarFilme(f);
+
 			} else if (opcao == 3) {
+				
 				// testar primeiro se há filmes para apagar
-				if (1 == 1) { // sustituir
+				if (v.totalFilmes() == 0) {
 					System.out.println("Não há filmes para apagar.");
-				} else {
+				} 
+				
+				else {
 					System.out.println("Número do filme a apagar: ");
 					int num = sc.nextInt();
 					sc.nextLine();
+
 					if (num >= 1 && num <= v.totalFilmes()) {
 						v.apagarFilme(num);
-					} else {
+					} 
+					
+					else {
 						System.out.println("Numero inválido.");
 					}
 				}
 
 			} else if (opcao == 4) {
-				// testar primeiro se há filmes para editar, depois acrescentar o ano
-				if (1 == 1) { // substituir
+				
+				// vêr se há filmes para editar né professor
+				if (v.totalFilmes() == 0) {
 					System.out.println("Não há filmes para editar.");
-				} else {
+				} 
+				
+				else {
 					System.out.print("Número do filme a editar: ");
 					int num = sc.nextInt();
 					sc.nextLine();
+
 					if (num >= 1 && num <= v.totalFilmes()) {
 						System.out.println("Novo titulo: ");
 						String novoTitulo = sc.nextLine();
-						v.editarFilme(num, novoTitulo);
+
+						// pedido de cria para novo ano
+						System.out.println("Novo ano: ");
+						int ano = sc.nextInt();
+						sc.nextLine();
+
+						// Aquilo que tememos, um novo método para editar titulo e ano
+						v.editarFilme(num, novoTitulo, ano);
+
 					} else {
 						System.out.println("Numero inválido.");
 					}

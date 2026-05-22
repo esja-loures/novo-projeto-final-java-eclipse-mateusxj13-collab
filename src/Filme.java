@@ -20,7 +20,7 @@ public class Filme {
 		
 		StringBuilder sb = new StringBuilder("");
 		sb.append("Título: "+ titulo);
-		sb.append("Título: "+ ano);
+		sb.append("ano "+ ano);
 		
 		return sb.toString();
 	}
